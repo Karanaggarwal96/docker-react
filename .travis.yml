@@ -1,0 +1,11 @@
+//Provide super user permissions
+sudo: required
+
+services: 
+    - docker
+
+before_install:
+    - docker build -t myImage -f Dockerfile.dev .
+
+scripts:
+    - docker run myImage npm run test -- --coverage
